@@ -74,7 +74,7 @@ static Batchinstaller *_instance = NULL;
 - (void)_listDevice {
     NSLog(@"Preparing to get devices status......");
     _idevicelistTask = [[NSTask alloc] init];
-    [_idevicelistTask setLaunchPath:@"/usr/bin/idevice_id"];
+    [_idevicelistTask setLaunchPath:@"/usr/local/bin/idevice_id"];
     [_idevicelistTask setArguments:[NSArray arrayWithObjects:@"-l", nil]];
     
     [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(checkVerificationProcess:) userInfo:nil repeats:TRUE];
@@ -136,7 +136,7 @@ static Batchinstaller *_instance = NULL;
 - (void) installTask:(NSString *)UUID {
     
     NSTask *_ideviceinstallerTask = [[NSTask alloc] init];
-    [_ideviceinstallerTask setLaunchPath:@"/usr/bin/ideviceinstaller"];
+    [_ideviceinstallerTask setLaunchPath:@"/usr/local/bin/ideviceinstaller"];
     [_ideviceinstallerTask setArguments:[NSArray arrayWithObjects:@"-u", UUID, @"-i",_packagePath, nil]];
     
     
@@ -187,7 +187,7 @@ static Batchinstaller *_instance = NULL;
 - (void) uninstallTask:(NSString *)UUID {
     
     NSTask *_ideviceinstallerTask = [[NSTask alloc] init];
-    [_ideviceinstallerTask setLaunchPath:@"/usr/bin/ideviceinstaller"];
+    [_ideviceinstallerTask setLaunchPath:@"/usr/local/bin/ideviceinstaller"];
     [_ideviceinstallerTask setArguments:[NSArray arrayWithObjects:@"-u", UUID, @"-U",_packageName, nil]];
     
     
